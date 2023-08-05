@@ -74,15 +74,12 @@
 		6AD0BC1C2A7CCFD700A0B41E /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				6AD0BC492A7E14AA00A0B41E /* Storyboard */,
+				6AD0BC482A7E148F00A0B41E /* Resource */,
 				6AD0BC422A7E07A200A0B41E /* Constants */,
 				6AD0BC372A7D726300A0B41E /* Protocol */,
 				6AD0BC322A7D71E000A0B41E /* Cells */,
 				6AD0BC312A7D71AC00A0B41E /* ViewControllers */,
-				6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */,
-				6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */,
-				6AD0BC232A7CCFD700A0B41E /* Main.storyboard */,
-				6AD0BC262A7CCFDC00A0B41E /* Assets.xcassets */,
-				6AD0BC282A7CCFDC00A0B41E /* LaunchScreen.storyboard */,
 				6AD0BC2B2A7CCFDC00A0B41E /* Info.plist */,
 			);
 			path = TamagotchiProject;
@@ -124,6 +121,25 @@
 				6AD0BC462A7E115900A0B41E /* Color.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		6AD0BC482A7E148F00A0B41E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */,
+				6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */,
+				6AD0BC262A7CCFDC00A0B41E /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6AD0BC492A7E14AA00A0B41E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6AD0BC232A7CCFD700A0B41E /* Main.storyboard */,
+				6AD0BC282A7CCFDC00A0B41E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
