@@ -29,6 +29,9 @@
 		6AD0BC552A7E417200A0B41E /* TakkeumTamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC542A7E417200A0B41E /* TakkeumTamagotchi.swift */; };
 		6AD0BC572A7E426800A0B41E /* BangsilTamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC562A7E426800A0B41E /* BangsilTamagotchi.swift */; };
 		6AD0BC592A7EA1C600A0B41E /* BanzzakTamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC582A7EA1C600A0B41E /* BanzzakTamagotchi.swift */; };
+		6AD0BC5D2A80095A00A0B41E /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC5B2A80095A00A0B41E /* SettingTableViewCell.swift */; };
+		6AD0BC5E2A80095A00A0B41E /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AD0BC5C2A80095A00A0B41E /* SettingTableViewCell.xib */; };
+		6AD0BC602A8010DB00A0B41E /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC5F2A8010DB00A0B41E /* SettingMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		6AD0BC542A7E417200A0B41E /* TakkeumTamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakkeumTamagotchi.swift; sourceTree = "<group>"; };
 		6AD0BC562A7E426800A0B41E /* BangsilTamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangsilTamagotchi.swift; sourceTree = "<group>"; };
 		6AD0BC582A7EA1C600A0B41E /* BanzzakTamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanzzakTamagotchi.swift; sourceTree = "<group>"; };
+		6AD0BC5B2A80095A00A0B41E /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		6AD0BC5C2A80095A00A0B41E /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		6AD0BC5F2A8010DB00A0B41E /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,8 @@
 			children = (
 				6AD0BC332A7D722700A0B41E /* TamagotchiCollectionViewCell.swift */,
 				6AD0BC342A7D722700A0B41E /* TamagotchiCollectionViewCell.xib */,
+				6AD0BC5B2A80095A00A0B41E /* SettingTableViewCell.swift */,
+				6AD0BC5C2A80095A00A0B41E /* SettingTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				6AD0BC502A7E32C500A0B41E /* TamagotchiType.swift */,
+				6AD0BC5F2A8010DB00A0B41E /* SettingMenu.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -240,6 +249,7 @@
 				6AD0BC2A2A7CCFDC00A0B41E /* LaunchScreen.storyboard in Resources */,
 				6AD0BC272A7CCFDC00A0B41E /* Assets.xcassets in Resources */,
 				6AD0BC362A7D722700A0B41E /* TamagotchiCollectionViewCell.xib in Resources */,
+				6AD0BC5E2A80095A00A0B41E /* SettingTableViewCell.xib in Resources */,
 				6AD0BC252A7CCFD700A0B41E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,11 +268,13 @@
 				6AD0BC222A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift in Sources */,
 				6AD0BC552A7E417200A0B41E /* TakkeumTamagotchi.swift in Sources */,
 				6AD0BC4C2A7E1C5C00A0B41E /* Tamagotchi.swift in Sources */,
+				6AD0BC602A8010DB00A0B41E /* SettingMenu.swift in Sources */,
 				6AD0BC3F2A7D794800A0B41E /* SettingViewController.swift in Sources */,
 				6AD0BC532A7E406E00A0B41E /* TamagotchiSelectionInfo.swift in Sources */,
 				6AD0BC352A7D722700A0B41E /* TamagotchiCollectionViewCell.swift in Sources */,
 				6AD0BC3B2A7D782D00A0B41E /* DetailViewController.swift in Sources */,
 				6AD0BC412A7D79A800A0B41E /* ChangeNameViewController.swift in Sources */,
+				6AD0BC5D2A80095A00A0B41E /* SettingTableViewCell.swift in Sources */,
 				6AD0BC4E2A7E270400A0B41E /* Message.swift in Sources */,
 				6AD0BC572A7E426800A0B41E /* BangsilTamagotchi.swift in Sources */,
 				6AD0BC592A7EA1C600A0B41E /* BanzzakTamagotchi.swift in Sources */,

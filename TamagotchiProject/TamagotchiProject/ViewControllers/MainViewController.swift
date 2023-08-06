@@ -67,14 +67,14 @@ class MainViewController: UIViewController,InitialSetting {
         waterTextField.placeholder = "물주세용"
         waterTextFieldBarView.backgroundColor = TMUIColor.borderColor
         
-        feedButton.imageView?.image = Icon.feed
-        feedButton.setImage(Icon.feed, for: .normal)
+        feedButton.imageView?.image = UIImage(systemName: Icon.feed)
+        feedButton.setImage(UIImage(systemName: Icon.feed), for: .normal)
         feedButton.setTitle("밥먹기", for: .normal)
         feedButton.tintColor = TMUIColor.borderColor
         feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
         feedButton.layer.borderWidth = 1
         
-        waterButton.setImage(Icon.water, for: .normal)
+        waterButton.setImage(UIImage(systemName: Icon.water), for: .normal)
         waterButton.setTitle("물먹기", for: .normal)
         waterButton.tintColor = TMUIColor.borderColor
         waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
