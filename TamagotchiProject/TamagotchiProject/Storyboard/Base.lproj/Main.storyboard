@@ -267,6 +267,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fjs-bM-lzC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="47c-Rt-LAa" firstAttribute="centerX" secondItem="9Ts-mJ-EbJ" secondAttribute="centerX" id="4tV-fM-XdP"/>
                             <constraint firstItem="47c-Rt-LAa" firstAttribute="top" secondItem="9Ts-mJ-EbJ" secondAttribute="bottom" constant="18" id="587-zk-UBZ"/>
@@ -297,6 +298,9 @@
                             <constraint firstItem="XSb-ee-V9p" firstAttribute="centerX" secondItem="fjs-bM-lzC" secondAttribute="centerX" id="zQk-ul-lJP"/>
                             <constraint firstItem="A9m-Nr-9tZ" firstAttribute="leading" secondItem="47c-Rt-LAa" secondAttribute="leading" id="zub-tf-v4h"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="33c-5f-huW" appends="YES" id="8lV-aR-FLD"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="borderLineView" destination="XSb-ee-V9p" id="bMr-KB-khc"/>
@@ -314,6 +318,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4x-xJ-akW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="33c-5f-huW">
+                    <connections>
+                        <action selector="viewDidTap:" destination="1qK-Ag-e6H" id="O3s-Td-7gg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2501.5267175572517" y="-220.42253521126761"/>
         </scene>
