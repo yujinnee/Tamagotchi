@@ -8,6 +8,7 @@
 import UIKit
 
 class TamagotchiCollectionViewCell: UICollectionViewCell,InitialSetting {
+    static let identifier = "TamagotchiCollectionViewCell"
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView!
 
@@ -18,17 +19,22 @@ class TamagotchiCollectionViewCell: UICollectionViewCell,InitialSetting {
     }
     
     func initUI() {
-        thumbnailImageView.layer.cornerRadius = 15
         thumbnailImageView.layer.borderColor = TMUIColor.borderColor.cgColor
-        thumbnailImageView.layer.borderWidth = 3
+        nameLabel.font = UIFont.systemFont(ofSize: 12)
+        nameLabel.layer.borderWidth = 1
+        nameLabel.layer.borderColor = TMUIColor.borderColor.cgColor
+        
     }
-    
     func initData() {
-        nameLabel.text = "준비중이에요"
+        setEmptyData()
     }
-    
     func setData(tamagotchi: Tamagotchi){
-        nameLabel.text = tamagotchi
+        nameLabel.text = tamagotchi.titleName
+        thumbnailImageView.image = UIImage(named:"\(tamagotchi.type.imageNum)-6")
+    }
+    func setEmptyData(){
+        nameLabel.text = "준비중이에요"
+        thumbnailImageView.image = UIImage(named: "noImage")
     }
 
 }

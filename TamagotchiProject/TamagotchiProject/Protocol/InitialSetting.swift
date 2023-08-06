@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
+@objc
 protocol InitialSetting{
-    func initUI()
-    func initData()
+    @objc optional func initUI()
+    @objc optional func initData()
 }

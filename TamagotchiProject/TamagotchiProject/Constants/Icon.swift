@@ -8,8 +8,8 @@
 import UIKit
 
 enum Icon{
-    static let feed = UIImage(systemName: "drop.circle")
-    static let water = UIImage(systemName: "leaf.circle")
+    static let feed = UIImage(systemName: "leaf.circle")
+    static let water = UIImage(systemName: "drop.circle")
     static let pencil = UIImage(systemName: "pencil")
     static let moon  = UIImage(systemName: "moon.fill")
     static let refresh = UIImage(systemName: "arrow.clockwise")

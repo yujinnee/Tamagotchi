@@ -9,5 +9,5 @@ import Foundation
 
 struct TamagotchiSelectionInfo{
     
-    var list = [Tamagotchi(type: .bangsil),Tamagotchi(type: .bangsil),Tamagotchi(type: .banzzak)]
+    var list = [Tamagotchi(type: .takkeum),Tamagotchi(type: .bangsil),Tamagotchi(type: .banzzak)]
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qD9-d5-Edh">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KUS-PW-59T">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L1g-f9-rfp">
                                     <size key="itemSize" width="128" height="128"/>
@@ -48,13 +48,14 @@
                             <constraint firstItem="KUS-PW-59T" firstAttribute="top" secondItem="Dtk-6n-XaP" secondAttribute="top" id="nBd-8w-2zM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="R2Y-9w-Duh"/>
                     <connections>
-                        <outlet property="tamagotchiCollectionView" destination="KUS-PW-59T" id="9vS-R2-mbr"/>
+                        <outlet property="selectionCollectionView" destination="KUS-PW-59T" id="P2H-Xc-YIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5W-uN-9fd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301" y="-141"/>
+            <point key="canvasLocation" x="625.19083969465646" y="-141.5492957746479"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="GzV-Uj-Tqr">
@@ -81,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crj-oJ-97T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="-243"/>
+            <point key="canvasLocation" x="1463.3587786259541" y="-243.66197183098592"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="dlC-g0-GCq">
@@ -96,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4x-xJ-akW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="-220"/>
+            <point key="canvasLocation" x="2501.5267175572517" y="-220.42253521126761"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="G6W-Zh-MWm">
@@ -111,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmk-Qh-2Cq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2373" y="-199"/>
+            <point key="canvasLocation" x="3298.4732824427479" y="-199.29577464788733"/>
         </scene>
         <!--Change Name View Controller-->
         <scene sceneID="NX7-w3-It2">
@@ -126,7 +127,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZF2-05-Bq4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3579" y="-169"/>
+            <point key="canvasLocation" x="4504.580152671756" y="-169.01408450704227"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FAO-zr-l91">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qD9-d5-Edh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8BI-FV-hmw">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F6h-Ns-5bf" kind="relationship" relationship="rootViewController" id="z1f-NM-WwQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSM-us-XUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-301.52671755725191" y="-141.5492957746479"/>
         </scene>
     </scenes>
     <resources>

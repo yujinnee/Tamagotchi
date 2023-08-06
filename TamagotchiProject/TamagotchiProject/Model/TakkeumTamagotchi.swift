@@ -8,12 +8,12 @@
 import Foundation
 
 class TakkeumTamagotchi: Tamagotchi,TamagotchiProtocol{
-    var type = TamagotchiType.Takkeum
-    var imageName: String {
-        return "\(type.imageNum)-\(level)"
-    }
-    var titleName: String {
-        return type.title
-    }
+//    var type = TamagotchiType.Takkeum
+//    var imageName: String {
+//        return "\(type.imageNum)-\(level)"
+//    }
+//    var titleName: String {
+//        return type.title
+//    }
     
 }
