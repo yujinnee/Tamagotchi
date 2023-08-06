@@ -8,18 +8,27 @@
 import UIKit
 
 class TamagotchiCollectionViewCell: UICollectionViewCell,InitialSetting {
-    func setUI() {
-        <#code#>
-    }
-    
-    func initData() {
-        <#code#>
-    }
-    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var thumbnailImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        initUI()
+        initData()
+    }
+    
+    func initUI() {
+        thumbnailImageView.layer.cornerRadius = 15
+        thumbnailImageView.layer.borderColor = TMUIColor.borderColor.cgColor
+        thumbnailImageView.layer.borderWidth = 3
+    }
+    
+    func initData() {
+        nameLabel.text = "준비중이에요"
+    }
+    
+    func setData(tamagotchi: Tamagotchi){
+        nameLabel.text = tamagotchi
     }
 
 }
