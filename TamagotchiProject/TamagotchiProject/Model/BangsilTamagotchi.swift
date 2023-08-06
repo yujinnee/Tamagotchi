@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class BangsilTamagotchi: Tamagotchi,TamagotchiProtocol{
+////    override var type: TamagotchiType{
+////        get{
+////            type = TamagotchiType.bangsil
+////        }
+////        set(value){
+////            
+////        }
+////    }
+////  
+}

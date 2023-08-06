@@ -8,13 +8,11 @@
 import Foundation
 
 protocol TamagotchiProtocol{
-    var type: TamagotchiType {get}
-    var imageName: String {get}
-    var titleName: String {get}
-    
+//    var type: TamagotchiType {get}
 }
 
 class Tamagotchi{
+    var type: TamagotchiType
     var level: Int = 0
     let maximumRice = 99
     let maximumDrop = 49
@@ -34,6 +32,21 @@ class Tamagotchi{
             }
         }
     }
+    var imageName: String {
+          get {
+              return "\(type.imageNum)-\(level)"
+          }
+         
+      }
+    var titleName: String {
+         get {
+             return type.title
+         }
+      }
+    init(type: TamagotchiType){
+        self.type = type
+    }
+    
     func getLevel() -> Int {
         var computedLevel = Int(Float(rice)/5 + Float(drop)/2)
         if computedLevel < minimumLevel {computedLevel = minimumLevel}

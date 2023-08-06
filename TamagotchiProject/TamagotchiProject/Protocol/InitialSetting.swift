@@ -8,6 +8,6 @@
 import Foundation
 
 protocol InitialSetting{
-    func setUI()
+    func initUI()
     func initData()
 }

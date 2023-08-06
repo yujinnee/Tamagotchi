@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+class BanzzakTamagotchi: Tamagotchi,TamagotchiProtocol{
+    var type = TamagotchiType.Banzzak
+    
+    var imageName: String{
+        return "\(type.imageNum) - \(level)"
+    }
+    
+    var titleName: String{
+        return type.title
+    }
+    
+    
+}
