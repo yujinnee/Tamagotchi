@@ -8,16 +8,9 @@
 import UIKit
 
 class TamagotchiSelectionViewController: UIViewController,InitialSetting {
+    var list = TamagotchiSelectionInfo().list
     
     static let identifier = "TamagotchiSelectionViewController"
-    
-    func setUI() {
-        <#code#>
-    }
-    
-    func initData() {
-        <#code#>
-    }
     
 
     @IBOutlet var tamagotchiCollectionView: UICollectionView!
@@ -27,5 +20,15 @@ class TamagotchiSelectionViewController: UIViewController,InitialSetting {
     }
 
 
+}
+
+extension TamagotchiSelectionViewController: InitialSetting{
+    func initUI() {
+        <#code#>
+    }
+    
+    func initData() {
+        <#code#>
+    }
 }
 
