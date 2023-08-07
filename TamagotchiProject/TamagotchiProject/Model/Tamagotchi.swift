@@ -11,9 +11,9 @@ protocol TamagotchiProtocol{
 //    var type: TamagotchiType {get}
 }
 
-class Tamagotchi{
+class Tamagotchi {
     var type: TamagotchiType
-    var level: Int = 0
+    var level: Int = 1
     let maximumRice = 99
     let maximumDrop = 49
     var minimumLevel = 1
@@ -38,11 +38,21 @@ class Tamagotchi{
           }
          
       }
+    var thumbnailImageName: String {
+        get{
+            return "\(type.imageNum)-6"
+        }
+    }
     var titleName: String {
          get {
              return type.title
          }
       }
+    var introduction: String {
+        get {
+            return type.introduction
+        }
+    }
     init(type: TamagotchiType){
         self.type = type
     }

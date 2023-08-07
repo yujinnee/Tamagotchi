@@ -7,12 +7,21 @@
 
 import UIKit
 
-class ChangeNameViewController: UIViewController {
+class ChangeNameViewController: UIViewController,InitialSetting{
 
+    @IBOutlet var nameTextFieldBarView: UIView!
+    @IBOutlet var nameTextField: UITextField!
+    let placeholder = "대장님의 이름을 적어주세요"
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initUI()
     
+    }
+    func initUI() {
+        nameTextField.borderStyle = .none
+        nameTextField.placeholder = placeholder
+        nameTextFieldBarView.backgroundColor = TMUIColor.borderColor
+        
     }
     
 

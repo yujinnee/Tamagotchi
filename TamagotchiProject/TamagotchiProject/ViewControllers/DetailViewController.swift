@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController,InitialSetting {
     static let identifier = "DetailViewController"
-
+    
     @IBOutlet var alertBackgroundView: UIView!
     @IBOutlet var thumbnailImageView: UIImageView!
     @IBOutlet var borderLineView: UIView!
@@ -20,16 +20,22 @@ class DetailViewController: UIViewController,InitialSetting {
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var startButton: UIButton!
     
+    
+    
     var name: String?
     var introduction: String?
+    var type: TamagotchiType?
     var imageName: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         initData()
-
+        
     }
     func initUI() {
+        
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        
         alertBackgroundView.backgroundColor = TMUIColor.backgroundColor
         
         borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
@@ -43,6 +49,10 @@ class DetailViewController: UIViewController,InitialSetting {
         lineView.backgroundColor = TMUIColor.borderColor
         
         introductionLabel.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
+        introductionLabel.numberOfLines = 0
+        introductionLabel.textAlignment = .center
+        introductionLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        introductionLabel.textColor = TMUIColor.fontColor
         
         underLineView.backgroundColor = .lightGray
         
@@ -59,7 +69,28 @@ class DetailViewController: UIViewController,InitialSetting {
         introductionLabel.text = introduction ?? "소개"
         thumbnailImageView.image = UIImage(named: imageName ?? "noImage" ) ?? UIImage()
     }
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
     
-
-
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+            
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc =  sb.instantiateViewController(identifier: MainViewController.identifier) as? MainViewController else{return}
+            
+            let nav = UINavigationController(rootViewController: vc)
+            
+            sceneDelegate?.window?.rootViewController = nav
+            sceneDelegate?.window?.makeKeyAndVisible()
+        
+        UserDefaults.standard.set(type?.rawValue ?? "notype", forKey: "type")
+            
+        
+            
+    }
+    
+    
 }

@@ -21,6 +21,7 @@ class TamagotchiSelectionViewController: UIViewController,InitialSetting {
         registerCell()
         setDelegate()
         setCollectionViewLayout()
+        
     }
     
     func initUI() {
@@ -40,6 +41,9 @@ class TamagotchiSelectionViewController: UIViewController,InitialSetting {
         layout.itemSize = CGSize(width: 100, height: 150)
         selectionCollectionView.collectionViewLayout = layout
     }
+    func layoutNavigationBar(){
+        navigationItem.title = "다마고치 선택하기"
+    }
 
 
 }
@@ -57,6 +61,18 @@ extension TamagotchiSelectionViewController: UICollectionViewDelegate,UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return totalCellNum
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
+        let data = list[indexPath.row]
+        vc.name = data.titleName
+        vc.imageName = data.thumbnailImageName
+        vc.introduction = data.introduction
+        vc.type = data.type
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+        
     }
     
 }
