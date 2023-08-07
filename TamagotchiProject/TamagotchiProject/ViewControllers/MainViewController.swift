@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController,InitialSetting {
     static let identifier = "MainViewController"
+    var tamagotchi: Tamagotchi?
+    var userName: String?
 
     @IBOutlet var bubbleImageView: UIImageView!
     
@@ -38,12 +40,19 @@ class MainViewController: UIViewController,InitialSetting {
 
     
     }
+    override func viewDidAppear(_ animated: Bool) {
+        userName = UserDefaults.standard.string(forKey: "nickname")
+        navigationItem.title = "\(userName!)의 다마고치"
+    
+
+    }
     func initUI() {
         bubbleImageView.image = UIImage(named: "bubble")
         bubbleImageView.tintColor = TMUIColor.borderColor
         
         messageLabel.font = UIFont.systemFont(ofSize: 11, weight: .medium)
         messageLabel.textColor = TMUIColor.fontColor
+        messageLabel.numberOfLines = 0
         
         borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
         borderLineView.layer.borderWidth = 1
@@ -55,6 +64,8 @@ class MainViewController: UIViewController,InitialSetting {
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         descriptionLabel.textColor = TMUIColor.fontColor
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .center
         
 
         feedTextField.borderStyle = .none
@@ -80,14 +91,73 @@ class MainViewController: UIViewController,InitialSetting {
         waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
         waterButton.layer.borderWidth = 1
         
+        userName = UserDefaults.standard.string(forKey: "nickname")
+        navigationItem.title = "\(userName!)의 다마고치"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(profileDidTap))
+        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
+        
+        
+    }
+    @objc
+    func profileDidTap(){
+        guard let vc = storyboard?.instantiateViewController(identifier: SettingViewController.identifier) as? SettingViewController else {return}
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func initData() {
-        messageLabel.text = message ?? "다마고치의 메시지"
-        tamagotchiImageView.image = UIImage(named: imageName ?? "noImage") ?? UIImage()
-        nameLabel.text = name ?? "다마고치 이름"
-        descriptionLabel.text = info ?? "다마고치 정보"
+//        let tamagotchiDictionary = [String:Int]()
         
+        guard let savedTamagotchiDictionary = UserDefaults.standard.dictionary(forKey: "tamagotchi") as? [String:Int] else {return}
+        let type = TamagotchiType(rawValue: savedTamagotchiDictionary["type"] ?? 0) ?? TamagotchiType.bangsil
+        let feedNum = savedTamagotchiDictionary["feed"]
+        let waterNum = savedTamagotchiDictionary["water"]
+        
+        tamagotchi = Tamagotchi(type: type , feed: feedNum ?? 0, water: waterNum ?? 0)
+        
+        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
+        tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "") ?? UIImage()
+        nameLabel.text = tamagotchi?.titleName ?? "다마고치 이름"
+        descriptionLabel.text = tamagotchi?.description ?? "다마고치 정보"
+        
+        
+        
+    }
+    @IBAction func feedButtonTapped(_ sender: UIButton) {
+
+        if feedTextField.text == ""{
+            tamagotchi?.rice += 1
+        }else{
+            let num = Int(feedTextField.text ?? "0") ?? 0
+            if (num<100){
+                tamagotchi?.rice += Int(feedTextField.text ?? "0") ?? 0
+            }
+            
+        }
+        descriptionLabel.text = tamagotchi?.description
+        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
+        tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
+        
+        let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
+        UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
+    }
+    
+    @IBAction func waterButtonDidTapped(_ sender: UIButton) {
+       
+        if waterTextField.text == ""{
+            tamagotchi?.drop += 1
+        }else {
+            let num = Int(waterTextField.text ?? "0") ?? 0
+            if (num<50){
+                tamagotchi?.drop += Int(waterTextField.text ?? "0") ?? 0
+            }
+        }
+        descriptionLabel.text = tamagotchi?.description
+        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
+        tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
+        
+        let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
+        UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
     }
     @IBAction func viewDidTap(_ sender: Any) {
         view.endEditing(true)

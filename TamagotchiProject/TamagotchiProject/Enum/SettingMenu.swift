@@ -28,7 +28,7 @@ enum SettingMenu: CaseIterable{
     }
     var subContents: String {
         switch self {
-        case .setName: return "고래밥"// 유저디폴츠
+        case .setName: return UserDefaults.standard.string(forKey: "nickname") ?? ""
         case .changeTama: return ""
         case .reset: return ""
         }

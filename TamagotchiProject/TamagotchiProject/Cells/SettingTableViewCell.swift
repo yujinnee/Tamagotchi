@@ -9,6 +9,7 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell,InitialSetting {
     static let identifier = "SettingTableViewCell"
+    var nickName: String?
 
     @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var contentsLabel: UILabel!
@@ -33,4 +34,5 @@ class SettingTableViewCell: UITableViewCell,InitialSetting {
         subContentsLabel.text = subContents
         
     }
+    
 }

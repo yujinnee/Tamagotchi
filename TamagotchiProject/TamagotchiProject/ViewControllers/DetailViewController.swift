@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController,InitialSetting {
     static let identifier = "DetailViewController"
+    var tamagotchi: Tamagotchi?
+    var viewType =  SelectionType.new
     
     @IBOutlet var alertBackgroundView: UIView!
     @IBOutlet var thumbnailImageView: UIImageView!
@@ -60,7 +62,14 @@ class DetailViewController: UIViewController,InitialSetting {
         cancelButton.backgroundColor = .systemGray5
         cancelButton.tintColor = TMUIColor.fontColor
         
-        startButton.setTitle("시작하기", for: .normal)
+        switch viewType {
+        case .new:
+            startButton.setTitle("시작하기", for: .normal)
+            
+        case .change:
+            startButton.setTitle("변경하기", for: .normal)
+            
+        }
         startButton.tintColor = TMUIColor.fontColor
     }
     
@@ -74,6 +83,11 @@ class DetailViewController: UIViewController,InitialSetting {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        switch viewType {
+        case .new:
+            
+            UserDefaults.standard.set("대장", forKey: "nickname")
+     
             
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
             let sceneDelegate = windowScene?.delegate as? SceneDelegate
@@ -85,11 +99,41 @@ class DetailViewController: UIViewController,InitialSetting {
             
             sceneDelegate?.window?.rootViewController = nav
             sceneDelegate?.window?.makeKeyAndVisible()
-        
-        UserDefaults.standard.set(type?.rawValue ?? "notype", forKey: "type")
             
-        
+            let tamagotchi = ["type": type?.rawValue ?? 0,"feed": 0,"water": 0]
+            UserDefaults.standard.setValue(tamagotchi, forKey: "tamagotchi")
+            UserDefaults.standard.set(true, forKey: "isLaunched")
             
+        case .change:
+            
+            guard let savedTamagotchiDictionary = UserDefaults.standard.dictionary(forKey: "tamagotchi") as? [String:Int] else {return}
+//            let tamaGotchitype = TamagotchiType(rawValue: savedTamagotchiDictionary["type"] ?? 0) ?? TamagotchiType.bangsil
+            let feedNum = savedTamagotchiDictionary["feed"]
+            let waterNum = savedTamagotchiDictionary["water"]
+            
+//            tamagotchi = Tamagotchi(type: type?.rawValue , feed: feedNum ?? 0, water: waterNum ?? 0)
+            
+            let newTamagotchi = ["type": type?.rawValue ,"feed": feedNum,"water": waterNum]
+            UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
+       
+           
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc =  sb.instantiateViewController(identifier: MainViewController.identifier) as? MainViewController else{return}
+            
+            let nav = UINavigationController(rootViewController: vc)
+            
+            sceneDelegate?.window?.rootViewController = nav
+            sceneDelegate?.window?.makeKeyAndVisible()
+//            dismiss(animated: true)
+//            navigationController?.popViewController(animated: true)
+        }
+        
+        
+        
+        
     }
     
     

@@ -6,11 +6,16 @@
 //
 
 import UIKit
+enum SelectionType{
+    case new
+    case change
+}
 class TamagotchiSelectionViewController: UIViewController,InitialSetting {
     var list = TamagotchiSelectionInfo().list
     
     static let identifier = "TamagotchiSelectionViewController"
     let totalCellNum = 25
+    var viewType = SelectionType.new
     
 
     @IBOutlet var selectionCollectionView: UICollectionView!
@@ -63,16 +68,35 @@ extension TamagotchiSelectionViewController: UICollectionViewDelegate,UICollecti
         return totalCellNum
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
-        let data = list[indexPath.row]
-        vc.name = data.titleName
-        vc.imageName = data.thumbnailImageName
-        vc.introduction = data.introduction
-        vc.type = data.type
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
-        
+        switch viewType{
+        case .change:
+            if indexPath.row < list.count{
+                guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
+                let data = list[indexPath.row]
+                vc.name = data.titleName
+                vc.imageName = data.thumbnailImageName
+                vc.introduction = data.introduction
+                vc.type = data.type
+                vc.viewType = viewType
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true)
+            }
+        case .new:
+            if indexPath.row < list.count{
+                guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {return}
+                let data = list[indexPath.row]
+                vc.name = data.titleName
+                vc.imageName = data.thumbnailImageName
+                vc.introduction = data.introduction
+                vc.type = data.type
+                vc.viewType = viewType
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true)
+            }
+        }
+       
     }
     
 }

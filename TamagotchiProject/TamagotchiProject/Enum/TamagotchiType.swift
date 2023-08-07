@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum TamagotchiType: String{
-    case takkeum = "takkeum"
-    case bangsil = "bangsil"
-    case banzzak = "banzzak"
+enum TamagotchiType: Int{
+    case takkeum = 0
+    case bangsil = 1
+    case banzzak = 2
     
     var title: String{
         switch self{
