@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController,InitialSetting {
     static let identifier = "MainViewController"
     var tamagotchi: Tamagotchi?
-    var userName: String?
+    var userName = UserDefaults.standard.string(forKey: "nickname")
 
     @IBOutlet var bubbleImageView: UIImageView!
     
@@ -37,29 +37,34 @@ class MainViewController: UIViewController,InitialSetting {
         initUI()
         initData()
         setKeyboardObserver()
+        setNavigationBar()
 
     
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         userName = UserDefaults.standard.string(forKey: "nickname")
         navigationItem.title = "\(userName!)의 다마고치"
+        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
     
 
     }
     func initUI() {
+        view.backgroundColor = TMUIColor.backgroundColor
+        
         bubbleImageView.image = UIImage(named: "bubble")
         bubbleImageView.tintColor = TMUIColor.borderColor
         
-        messageLabel.font = UIFont.systemFont(ofSize: 11, weight: .medium)
+        messageLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         messageLabel.textColor = TMUIColor.fontColor
         messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
         
         borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
-        borderLineView.layer.borderWidth = 1
+        borderLineView.layer.borderWidth = 0.5
         borderLineView.layer.cornerRadius = 3
         borderLineView.backgroundColor = TMUIColor.backgroundColor
         
-        nameLabel.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         nameLabel.textColor = TMUIColor.fontColor
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
@@ -84,18 +89,24 @@ class MainViewController: UIViewController,InitialSetting {
         feedButton.tintColor = TMUIColor.borderColor
         feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
         feedButton.layer.borderWidth = 1
+        feedButton.layer.cornerRadius = 5
         
         waterButton.setImage(UIImage(systemName: Icon.water), for: .normal)
         waterButton.setTitle("물먹기", for: .normal)
         waterButton.tintColor = TMUIColor.borderColor
         waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
         waterButton.layer.borderWidth = 1
+        waterButton.layer.cornerRadius = 5
         
         userName = UserDefaults.standard.string(forKey: "nickname")
+
+    }
+    
+    func setNavigationBar(){
         navigationItem.title = "\(userName!)의 다마고치"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(profileDidTap))
-        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : TMUIColor.fontColor]
+        self.navigationController?.navigationBar.tintColor = TMUIColor.fontColor
         
     }
     @objc

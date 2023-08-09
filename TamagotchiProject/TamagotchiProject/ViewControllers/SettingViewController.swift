@@ -19,14 +19,15 @@ class SettingViewController: UIViewController {
         registerCell()
         setDelegate()
         setLayout()
+        setNavigationBar()
+        setTableView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         settingTableView.reloadData()
 
         let nickname = UserDefaults.standard.string(forKey: "nickname")
-        self.navigationItem.leftBarButtonItem?.title = nickname
-        self.navigationItem.leftBarButtonItem?.tintColor = TMUIColor.fontColor
+        
     }
     
     func registerCell(){
@@ -38,10 +39,28 @@ class SettingViewController: UIViewController {
         settingTableView.delegate = self
     }
     func setLayout(){
-        navigationItem.leftBarButtonItem?.tintColor = TMUIColor.fontColor
-        nickname = UserDefaults.standard.string(forKey: "nickname")
+        view.backgroundColor = TMUIColor.backgroundColor
+        settingTableView.backgroundColor = .clear
+        
+        
+        let nickname = UserDefaults.standard.string(forKey: "nickname")
+        
+    }
+    func setNavigationBar(){
+        
+        navigationItem.backButtonTitle = ""
+        self.navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.title = "설정"
+
+
+    }
+    func setTableView(){
+        settingTableView.rowHeight = 50
     }
     
+    @objc func previousButtonTapped(){
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension SettingViewController: UITableViewDelegate,UITableViewDataSource{

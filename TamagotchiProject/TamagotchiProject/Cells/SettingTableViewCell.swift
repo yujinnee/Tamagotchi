@@ -23,6 +23,7 @@ class SettingTableViewCell: UITableViewCell,InitialSetting {
     }
 
     func initUI() {
+        backgroundColor = .clear
         iconImageView.tintColor = TMUIColor.fontColor
         chevronImageView.image = UIImage(systemName: "chevron.right") ?? UIImage()
         chevronImageView.tintColor = TMUIColor.fontColor

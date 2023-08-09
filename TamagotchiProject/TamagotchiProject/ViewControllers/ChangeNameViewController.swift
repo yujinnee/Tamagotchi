@@ -19,15 +19,17 @@ class ChangeNameViewController: UIViewController,InitialSetting{
     
     }
     func initUI() {
+        view.backgroundColor = TMUIColor.backgroundColor
+        
         nameTextField.borderStyle = .none
         nameTextField.placeholder = placeholder
         nameTextFieldBarView.backgroundColor = TMUIColor.borderColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(registerButtonTapped))
         navigationItem.title = "대장님 이름 정하기"
         
-        navigationItem.leftBarButtonItem?.tintColor = TMUIColor.fontColor
-        
-        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
+//        navigationItem.leftBarButtonItem?.tintColor = TMUIColor.fontColor
+//        
+//        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
     }
     
     @objc func registerButtonTapped(){

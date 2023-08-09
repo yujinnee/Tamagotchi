@@ -22,8 +22,6 @@ class DetailViewController: UIViewController,InitialSetting {
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var startButton: UIButton!
     
-    
-    
     var name: String?
     var introduction: String?
     var type: TamagotchiType?
@@ -41,11 +39,11 @@ class DetailViewController: UIViewController,InitialSetting {
         alertBackgroundView.backgroundColor = TMUIColor.backgroundColor
         
         borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
-        borderLineView.layer.borderWidth = 1
+        borderLineView.layer.borderWidth = 0.5
         borderLineView.layer.cornerRadius = 3
         borderLineView.backgroundColor = TMUIColor.backgroundColor
         
-        titleLabel.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        titleLabel.font = UIFont.systemFont(ofSize: 10, weight: .bold)
         titleLabel.textColor = TMUIColor.fontColor
         
         lineView.backgroundColor = TMUIColor.borderColor
