@@ -30,7 +30,15 @@ class TamagotchiSelectionViewController: UIViewController,InitialSetting {
     }
     
     func initUI() {
-        navigationItem.title = "다마고치 선택하기"
+        view.backgroundColor = TMUIColor.backgroundColor
+        selectionCollectionView.backgroundColor = .clear
+        switch viewType {
+        case .new:
+            navigationItem.title = "다마고치 선택하기"
+        case .change:
+            navigationItem.title = "다마고치 변경하기"
+        }
+       
     }
     
     func registerCell(){
@@ -46,9 +54,7 @@ class TamagotchiSelectionViewController: UIViewController,InitialSetting {
         layout.itemSize = CGSize(width: 100, height: 150)
         selectionCollectionView.collectionViewLayout = layout
     }
-    func layoutNavigationBar(){
-        navigationItem.title = "다마고치 선택하기"
-    }
+
 
 
 }

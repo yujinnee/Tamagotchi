@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,27 +23,49 @@
                             <constraint firstAttribute="width" secondItem="QkW-jO-aFL" secondAttribute="height" constant="1" id="AJO-fq-wXh"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVK-Ka-Gyb">
-                        <rect key="frame" x="85.666666666666671" y="237" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-87-9wo">
+                        <rect key="frame" x="10" y="227" width="193" height="26.333333333333343"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVK-Ka-Gyb">
+                                <rect key="frame" x="0.0" y="3" width="193" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LVK-Ka-Gyb" firstAttribute="centerY" secondItem="qBs-87-9wo" secondAttribute="centerY" id="AXP-7y-hDx"/>
+                            <constraint firstItem="LVK-Ka-Gyb" firstAttribute="leading" secondItem="qBs-87-9wo" secondAttribute="leading" id="Dcu-qd-0KG"/>
+                            <constraint firstItem="LVK-Ka-Gyb" firstAttribute="top" secondItem="qBs-87-9wo" secondAttribute="top" constant="3" id="Dqh-sc-F1T"/>
+                            <constraint firstAttribute="trailing" secondItem="LVK-Ka-Gyb" secondAttribute="trailing" id="PRF-J4-J8i"/>
+                            <constraint firstItem="LVK-Ka-Gyb" firstAttribute="centerX" secondItem="qBs-87-9wo" secondAttribute="centerX" id="ZNi-XI-WsI"/>
+                            <constraint firstAttribute="bottom" secondItem="LVK-Ka-Gyb" secondAttribute="bottom" constant="3" id="h8S-CG-cZb"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="QkW-jO-aFL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="1un-PD-oGu"/>
+                <constraint firstAttribute="trailing" secondItem="qBs-87-9wo" secondAttribute="trailing" constant="10" id="E5P-7m-uyT"/>
                 <constraint firstItem="QkW-jO-aFL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="TfE-FB-epB"/>
+                <constraint firstItem="qBs-87-9wo" firstAttribute="top" secondItem="QkW-jO-aFL" secondAttribute="bottom" constant="20" id="Wq1-lw-We8"/>
+                <constraint firstItem="qBs-87-9wo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="bB5-la-2Do"/>
                 <constraint firstAttribute="trailing" secondItem="QkW-jO-aFL" secondAttribute="trailing" constant="5" id="cD6-db-DkW"/>
-                <constraint firstItem="LVK-Ka-Gyb" firstAttribute="top" secondItem="QkW-jO-aFL" secondAttribute="bottom" constant="30" id="cKW-uW-sIw"/>
-                <constraint firstItem="LVK-Ka-Gyb" firstAttribute="centerX" secondItem="QkW-jO-aFL" secondAttribute="centerX" id="uLL-8J-2Vs"/>
+                <constraint firstItem="qBs-87-9wo" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="yBk-fQ-X9A"/>
             </constraints>
             <size key="customSize" width="213" height="306"/>
             <connections>
+                <outlet property="borderView" destination="qBs-87-9wo" id="UFR-LP-TXb"/>
                 <outlet property="nameLabel" destination="LVK-Ka-Gyb" id="MqR-fD-Vh1"/>
                 <outlet property="thumbnailImageView" destination="QkW-jO-aFL" id="oqa-9T-Fbp"/>
             </connections>
             <point key="canvasLocation" x="196.18320610687022" y="-190.84507042253523"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

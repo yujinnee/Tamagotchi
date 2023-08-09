@@ -12,6 +12,7 @@ class TamagotchiCollectionViewCell: UICollectionViewCell,InitialSetting {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView!
 
+    @IBOutlet var borderView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
@@ -19,10 +20,19 @@ class TamagotchiCollectionViewCell: UICollectionViewCell,InitialSetting {
     }
     
     func initUI() {
+        backgroundColor = .clear
+        
         thumbnailImageView.layer.borderColor = TMUIColor.borderColor.cgColor
-        nameLabel.font = UIFont.systemFont(ofSize: 12)
-        nameLabel.layer.borderWidth = 1
-        nameLabel.layer.borderColor = TMUIColor.borderColor.cgColor
+        
+        nameLabel.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        nameLabel.textAlignment = .center
+        nameLabel.textColor = TMUIColor.fontColor
+        
+        borderView.layer.borderWidth = 0.5
+        borderView.layer.borderColor = TMUIColor.borderColor.cgColor
+        borderView.layer.cornerRadius = 3
+        borderView.backgroundColor = TMUIColor.backgroundColor
+        
         
     }
     func initData() {
