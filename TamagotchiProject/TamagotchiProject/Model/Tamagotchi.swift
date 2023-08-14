@@ -36,13 +36,13 @@ class Tamagotchi {
         }
     }
     var drop:Int = 0
-//    {
-//        willSet {
-//            if newValue > maximumDrop{
-//                self.rice = maximumDrop
-//            }
-//        }
-//    }
+    {
+        willSet {
+            if newValue > maximumDrop{
+                self.rice = maximumDrop
+            }
+        }
+    }
     var imageName: String {
           get {
               if(level==10){
@@ -82,13 +82,7 @@ class Tamagotchi {
         self.drop = water
     }
 
-    
-//    func getLevel() -> Int {
-//        var computedLevel = Int(Float(rice)/5 + Float(drop)/2)
-//        if computedLevel < minimumLevel {computedLevel = minimumLevel}
-//        if computedLevel > maximumLevel {computedLevel = maximumLevel}
-//        return computedLevel
-//    }
+
     func getRandomMessage(userName: String) -> String{
         var db = Message()
         var messageList = [String]()
