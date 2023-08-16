@@ -6,6 +6,9 @@
 //
 
 import UIKit
+enum NicknameValidationError: Error{
+    case invalidletterCount
+}
 
 class ChangeNameViewController: UIViewController,InitialSetting{
     static let identifier = "ChangeNameViewController"
@@ -32,11 +35,23 @@ class ChangeNameViewController: UIViewController,InitialSetting{
 //        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
     }
     
+    func validateInputNum(text: String) throws -> Bool{
+        
+        guard 2..<6 ~= text.count else {
+            throw NicknameValidationError.invalidletterCount
+        }
+        return true
+    }
+    
     @objc func registerButtonTapped(){
         let name = nameTextField.text!
-        if(2..<6 ~= name.count){
+        do{
+            let result = try validateInputNum(text: name)
             UserDefaults.standard.set(name, forKey: "nickname")
             navigationController?.popViewController(animated: true)
+            
+        }catch{
+            print(error)
         }
        
     }
