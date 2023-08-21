@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A96AF912A936D4600E0B3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AF902A936D4600E0B3B3 /* NotificationManager.swift */; };
 		6AD0BC1E2A7CCFD700A0B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */; };
 		6AD0BC202A7CCFD700A0B41E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */; };
 		6AD0BC222A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC212A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A96AF902A936D4600E0B3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		6AD0BC1A2A7CCFD700A0B41E /* TamagotchiProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A96AF8F2A936D2500E0B3B3 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				6A96AF902A936D4600E0B3B3 /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		6AD0BC112A7CCFD700A0B41E = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		6AD0BC1C2A7CCFD700A0B41E /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A96AF8F2A936D2500E0B3B3 /* Notification */,
 				6AD0BC4F2A7E32B800A0B41E /* Enum */,
 				6AD0BC4A2A7E158600A0B41E /* Model */,
 				6AD0BC492A7E14AA00A0B41E /* Storyboard */,
@@ -279,6 +290,7 @@
 				6AD0BC572A7E426800A0B41E /* BangsilTamagotchi.swift in Sources */,
 				6AD0BC592A7EA1C600A0B41E /* BanzzakTamagotchi.swift in Sources */,
 				6AD0BC442A7E084000A0B41E /* Icon.swift in Sources */,
+				6A96AF912A936D4600E0B3B3 /* NotificationManager.swift in Sources */,
 				6AD0BC1E2A7CCFD700A0B41E /* AppDelegate.swift in Sources */,
 				6AD0BC202A7CCFD700A0B41E /* SceneDelegate.swift in Sources */,
 			);

@@ -46,6 +46,7 @@ class MainViewController: UIViewController,InitialSetting {
         initData()
         setKeyboardObserver()
         setNavigationBar()
+        NotificationManager.shared.addFeedNotification()
         
         
     }
@@ -53,7 +54,6 @@ class MainViewController: UIViewController,InitialSetting {
         userName = UserDefaults.standard.string(forKey: "nickname")
         navigationItem.title = "\(userName!)의 다마고치"
         messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
-        
         
     }
     func initUI() {
