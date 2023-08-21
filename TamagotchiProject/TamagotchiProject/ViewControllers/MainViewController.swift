@@ -95,16 +95,16 @@ class MainViewController: UIViewController,InitialSetting {
         feedButton.setImage(UIImage(systemName: Icon.feed), for: .normal)
         feedButton.setTitle("밥먹기", for: .normal)
         feedButton.tintColor = TMUIColor.borderColor
-        feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
-        feedButton.layer.borderWidth = 1
-        feedButton.layer.cornerRadius = 5
+//        feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
+//        feedButton.layer.borderWidth = 1
+//        feedButton.layer.cornerRadius = 5
         
         waterButton.setImage(UIImage(systemName: Icon.water), for: .normal)
         waterButton.setTitle("물먹기", for: .normal)
         waterButton.tintColor = TMUIColor.borderColor
-        waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
-        waterButton.layer.borderWidth = 1
-        waterButton.layer.cornerRadius = 5
+//        waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
+//        waterButton.layer.borderWidth = 1
+//        waterButton.layer.cornerRadius = 5
         
         userName = UserDefaults.standard.string(forKey: "nickname")
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A96AF912A936D4600E0B3B3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AF902A936D4600E0B3B3 /* NotificationManager.swift */; };
+		6A96AFA22A93D24900E0B3B3 /* FeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96AFA12A93D24900E0B3B3 /* FeedButton.swift */; };
 		6AD0BC1E2A7CCFD700A0B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */; };
 		6AD0BC202A7CCFD700A0B41E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */; };
 		6AD0BC222A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0BC212A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		6A96AF902A936D4600E0B3B3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		6A96AFA12A93D24900E0B3B3 /* FeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedButton.swift; sourceTree = "<group>"; };
 		6AD0BC1A2A7CCFD700A0B41E /* TamagotchiProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD0BC1D2A7CCFD700A0B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AD0BC1F2A7CCFD700A0B41E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		6A96AFA02A93D21B00E0B3B3 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				6A96AFA12A93D24900E0B3B3 /* FeedButton.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
 		6AD0BC112A7CCFD700A0B41E = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		6AD0BC1C2A7CCFD700A0B41E /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A96AFA02A93D21B00E0B3B3 /* UIComponent */,
 				6A96AF8F2A936D2500E0B3B3 /* Notification */,
 				6AD0BC4F2A7E32B800A0B41E /* Enum */,
 				6AD0BC4A2A7E158600A0B41E /* Model */,
@@ -275,6 +286,7 @@
 				6AD0BC3D2A7D791500A0B41E /* MainViewController.swift in Sources */,
 				6AD0BC392A7D739A00A0B41E /* InitialSetting.swift in Sources */,
 				6AD0BC512A7E32C500A0B41E /* TamagotchiType.swift in Sources */,
+				6A96AFA22A93D24900E0B3B3 /* FeedButton.swift in Sources */,
 				6AD0BC472A7E115900A0B41E /* Color.swift in Sources */,
 				6AD0BC222A7CCFD700A0B41E /* TamagotchiSelectionViewController.swift in Sources */,
 				6AD0BC552A7E417200A0B41E /* TakkeumTamagotchi.swift in Sources */,
