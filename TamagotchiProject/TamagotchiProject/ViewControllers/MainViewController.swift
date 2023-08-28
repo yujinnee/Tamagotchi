@@ -6,12 +6,20 @@
 //
 
 import UIKit
+enum FeedValidationError: Error{
+    case tooMany
+    case isNotInt
+}
+enum WaterValidationError: Error{
+    case tooMany
+    case isNotInt
+}
 
 class MainViewController: UIViewController,InitialSetting {
     static let identifier = "MainViewController"
     var tamagotchi: Tamagotchi?
     var userName = UserDefaults.standard.string(forKey: "nickname")
-
+    
     @IBOutlet var bubbleImageView: UIImageView!
     
     @IBOutlet var messageLabel: UILabel!
@@ -38,15 +46,15 @@ class MainViewController: UIViewController,InitialSetting {
         initData()
         setKeyboardObserver()
         setNavigationBar()
-
-    
+        NotificationManager.shared.addFeedNotification()
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         userName = UserDefaults.standard.string(forKey: "nickname")
         navigationItem.title = "\(userName!)의 다마고치"
         messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
-    
-
+        
     }
     func initUI() {
         view.backgroundColor = TMUIColor.backgroundColor
@@ -72,7 +80,7 @@ class MainViewController: UIViewController,InitialSetting {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         
-
+        
         feedTextField.borderStyle = .none
         feedTextField.textAlignment = .center
         feedTextField.placeholder = "밥주세용"
@@ -87,19 +95,19 @@ class MainViewController: UIViewController,InitialSetting {
         feedButton.setImage(UIImage(systemName: Icon.feed), for: .normal)
         feedButton.setTitle("밥먹기", for: .normal)
         feedButton.tintColor = TMUIColor.borderColor
-        feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
-        feedButton.layer.borderWidth = 1
-        feedButton.layer.cornerRadius = 5
+//        feedButton.layer.borderColor = TMUIColor.borderColor.cgColor
+//        feedButton.layer.borderWidth = 1
+//        feedButton.layer.cornerRadius = 5
         
         waterButton.setImage(UIImage(systemName: Icon.water), for: .normal)
         waterButton.setTitle("물먹기", for: .normal)
         waterButton.tintColor = TMUIColor.borderColor
-        waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
-        waterButton.layer.borderWidth = 1
-        waterButton.layer.cornerRadius = 5
+//        waterButton.layer.borderColor = TMUIColor.borderColor.cgColor
+//        waterButton.layer.borderWidth = 1
+//        waterButton.layer.cornerRadius = 5
         
         userName = UserDefaults.standard.string(forKey: "nickname")
-
+        
     }
     
     func setNavigationBar(){
@@ -117,7 +125,7 @@ class MainViewController: UIViewController,InitialSetting {
     }
     
     func initData() {
-//        let tamagotchiDictionary = [String:Int]()
+        //        let tamagotchiDictionary = [String:Int]()
         
         guard let savedTamagotchiDictionary = UserDefaults.standard.dictionary(forKey: "tamagotchi") as? [String:Int] else {return}
         let type = TamagotchiType(rawValue: savedTamagotchiDictionary["type"] ?? 0) ?? TamagotchiType.bangsil
@@ -132,43 +140,71 @@ class MainViewController: UIViewController,InitialSetting {
         descriptionLabel.text = tamagotchi?.description ?? "다마고치 정보"
         
         
+    }
+    
+    func validateFeedIntput(text:String) throws ->Bool{
+        guard Int(text) != nil else{
+            throw FeedValidationError.isNotInt
+        }
+        guard Int(text)! < 100 else{
+            throw FeedValidationError.tooMany
+        }
+        return true
         
     }
     @IBAction func feedButtonTapped(_ sender: UIButton) {
-
-        if feedTextField.text == ""{
-            tamagotchi?.rice += 1
-        }else{
-            let num = Int(feedTextField.text ?? "0") ?? 0
-            if (num<100){
-                tamagotchi?.rice += Int(feedTextField.text ?? "0") ?? 0
+        let text = feedTextField.text ?? ""
+        do {
+            let result = try validateFeedIntput(text: text)
+            if text == ""{
+                tamagotchi?.rice += 1
+            }else{
+                tamagotchi?.rice += Int(text)!
+                
             }
+            descriptionLabel.text = tamagotchi?.description
+            messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
+            tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
             
+            let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
+            UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
+        }catch{
+            print(error)
         }
-        descriptionLabel.text = tamagotchi?.description
-        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
-        tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
         
-        let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
-        UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
+        
+    }
+    func validateWaterIntput(text:String) throws ->Bool{
+        guard Int(text) != nil else{
+            throw WaterValidationError.isNotInt
+        }
+        guard Int(text)! < 50 else{
+            throw WaterValidationError.tooMany
+        }
+        return true
+        
     }
     
+    
     @IBAction func waterButtonDidTapped(_ sender: UIButton) {
-       
-        if waterTextField.text == ""{
-            tamagotchi?.drop += 1
-        }else {
-            let num = Int(waterTextField.text ?? "0") ?? 0
-            if (num<50){
-                tamagotchi?.drop += Int(waterTextField.text ?? "0") ?? 0
+        let text = waterTextField.text ?? ""
+        do{
+            let result = try validateWaterIntput(text: text)
+            if text == ""{
+                tamagotchi?.drop += 1
+            }else {
+                tamagotchi?.drop += Int(text)!
             }
+            descriptionLabel.text = tamagotchi?.description
+            messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
+            tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
+            
+            let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
+            UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
+        }catch{
+            print(error)
         }
-        descriptionLabel.text = tamagotchi?.description
-        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "")
-        tamagotchiImageView.image = UIImage(named: tamagotchi?.imageName ?? "noImage") ?? UIImage()
         
-        let newTamagotchi = ["type": tamagotchi?.type.rawValue ,"feed": tamagotchi?.rice,"water": tamagotchi?.drop]
-        UserDefaults.standard.setValue(newTamagotchi, forKey: "tamagotchi")
     }
     @IBAction func viewDidTap(_ sender: Any) {
         view.endEditing(true)
@@ -184,20 +220,20 @@ extension MainViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-          if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                  let keyboardRectangle = keyboardFrame.cgRectValue
-                  let keyboardHeight = keyboardRectangle.height
-              UIView.animate(withDuration: 1) {
-                  self.view.window?.frame.origin.y -= keyboardHeight
-              }
-          }
-      }
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            UIView.animate(withDuration: 1) {
+                self.view.window?.frame.origin.y -= keyboardHeight
+            }
+        }
+    }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.window?.frame.origin.y != 0 {
             if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                    let keyboardRectangle = keyboardFrame.cgRectValue
-                    let keyboardHeight = keyboardRectangle.height
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
                 UIView.animate(withDuration: 1) {
                     self.view.window?.frame.origin.y += keyboardHeight
                 }
