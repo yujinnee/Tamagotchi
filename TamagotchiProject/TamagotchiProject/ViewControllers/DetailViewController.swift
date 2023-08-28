@@ -14,7 +14,7 @@ class DetailViewController: UIViewController,InitialSetting {
     
     @IBOutlet var alertBackgroundView: UIView!
     @IBOutlet var thumbnailImageView: UIImageView!
-    @IBOutlet var borderLineView: UIView!
+//    @IBOutlet var borderLineView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var lineView: UIView!
     @IBOutlet var introductionLabel: UILabel!
@@ -38,14 +38,14 @@ class DetailViewController: UIViewController,InitialSetting {
         
         alertBackgroundView.backgroundColor = TMUIColor.backgroundColor
         
-        borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
-        borderLineView.layer.borderWidth = 0.5
-        borderLineView.layer.cornerRadius = 3
-        borderLineView.backgroundColor = TMUIColor.backgroundColor
-        
+//        borderLineView.layer.borderColor = TMUIColor.borderColor.cgColor
+//        borderLineView.layer.borderWidth = 0.5
+//        borderLineView.layer.cornerRadius = 3
+//        borderLineView.backgroundColor = TMUIColor.backgroundColor
+//
         titleLabel.font = UIFont.systemFont(ofSize: 10, weight: .bold)
         titleLabel.textColor = TMUIColor.fontColor
-        
+        titleLabel.textAlignment = .center
         lineView.backgroundColor = TMUIColor.borderColor
         
         introductionLabel.font = UIFont.systemFont(ofSize: 10, weight: .semibold)

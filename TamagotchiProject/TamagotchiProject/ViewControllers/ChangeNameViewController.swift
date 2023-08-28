@@ -35,6 +35,7 @@ class ChangeNameViewController: UIViewController,InitialSetting{
 //        navigationItem.rightBarButtonItem?.tintColor = TMUIColor.fontColor
     }
     
+    
     func validateInputNum(text: String) throws -> Bool{
         
         guard 2..<6 ~= text.count else {
@@ -48,6 +49,7 @@ class ChangeNameViewController: UIViewController,InitialSetting{
         do{
             let result = try validateInputNum(text: name)
             UserDefaults.standard.set(name, forKey: "nickname")
+            NotificationCenter.default.post(name: NSNotification.Name("nickname"), object: nil,userInfo: ["name" : name])
             navigationController?.popViewController(animated: true)
             
         }catch{

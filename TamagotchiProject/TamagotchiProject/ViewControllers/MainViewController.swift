@@ -47,13 +47,29 @@ class MainViewController: UIViewController,InitialSetting {
         setKeyboardObserver()
         setNavigationBar()
         NotificationManager.shared.addFeedNotification()
-        
+        addNotificationObserver()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        userName = UserDefaults.standard.string(forKey: "nickname")
-        navigationItem.title = "\(userName!)의 다마고치"
-        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
+//    override func viewWillAppear(_ animated: Bool) {
+//        userName = UserDefaults.standard.string(forKey: "nickname")
+//        navigationItem.title = "\(userName!)의 다마고치"
+//        messageLabel.text = tamagotchi?.getRandomMessage(userName: userName ?? "") ?? "다마고치의 메시지"
+//
+//    }
+    func addNotificationObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name("nickname"), object: nil)
+ 
+    }
+    
+    @objc func selectImageNotificationObserver(notification: NSNotification) {
+        
+        if let name = notification.userInfo?["name"] as? String {
+            navigationItem.title = "\(name)의 다마고치"
+            messageLabel.text = tamagotchi?.getRandomMessage(userName: name) ?? "다마고치의 메시지"
+      
+            print(name,"으로 메인 바뀜")
+        }
+        
         
     }
     func initUI() {
