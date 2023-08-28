@@ -21,12 +21,28 @@ class SettingViewController: UIViewController {
         setLayout()
         setNavigationBar()
         setTableView()
+        addNotificationObserver()
+    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        settingTableView.reloadData()
+//        let nickname = UserDefaults.standard.string(forKey: "nickname")
+//
+//    }
+    func addNotificationObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver(notification:)), name: NSNotification.Name("nickname"), object: nil)
+ 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        settingTableView.reloadData()
-
-        let nickname = UserDefaults.standard.string(forKey: "nickname")
+    @objc func selectImageNotificationObserver(notification: NSNotification) {
+        
+        if let name = notification.userInfo?["name"] as? String {
+           nickname = name
+            settingTableView.reloadData()
+            print(nickname,"으로 바뀜")
+        }
+        
         
     }
     
